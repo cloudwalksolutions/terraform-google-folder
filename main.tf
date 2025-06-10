@@ -24,7 +24,7 @@ module "folders" {
 module "projects" {
   for_each = var.projects_dict
 
-  source = "app.terraform.io/lakegames/project/google"
+  source = "git::https://github.com/cloudwalksolutions/terraform-google-project.git?ref=0.0.1"
 
   billing_account = var.billing_account
   lifecycle_name  = var.lifecycle_name
