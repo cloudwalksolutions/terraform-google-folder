@@ -22,7 +22,7 @@ variable "folder_name" {
 variable "billing_account" {
   description = "Billing account ID"
   type        = string
-  default     = "015AC7-0AC616-A423D8"
+  default     = ""
 }
 
 
