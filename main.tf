@@ -14,7 +14,9 @@ module "folders" {
   ] : []
 
   folder_admin_roles = merge(
-    { for role in var.folder_permissions : role => [] },
+    { for role in var.folder_permissions : role => [
+      "serviceAccount:${local.sa_email}",
+    ] },
     var.sa_is_security_admin ? {
       "roles/iam.securityAdmin" = [
         "serviceAccount:${local.sa_email}",
