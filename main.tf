@@ -18,7 +18,6 @@ module "folders" {
   )
 
   depends_on = [module.folder_service_account.email]
-
 }
 
 
