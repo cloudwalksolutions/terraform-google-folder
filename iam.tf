@@ -33,7 +33,7 @@ module "folder_iam_bindings" {
   count = var.create_service_account ? 1 : 0
 
   source  = "terraform-google-modules/iam/google//modules/folders_iam"
-  folders = [module.folders.name]
+  folders = [module.folders.id]
 
   bindings = {
     for role in distinct(concat(
