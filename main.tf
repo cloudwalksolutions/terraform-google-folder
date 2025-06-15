@@ -12,11 +12,16 @@ module "folders" {
     "serviceAccount:${local.sa_email}"
   ] : []
 
-  folder_admin_roles = concat(
-    var.default_folder_permissions,
-    var.extra_folder_permissions,
-    var.sa_is_security_admin ? ["roles/iam.securityAdmin"] : []
-  )
+  per_folder_admins = {
+    (var.folder_name) = {
+      members = var.create_service_account ? ["serviceAccount:${local.sa_email}"] : []
+      roles   = concat(
+        var.default_folder_permissions,
+        var.extra_folder_permissions,
+        var.sa_is_security_admin ? ["roles/iam.securityadmin"] : []
+      )
+    }
+  }
 
   depends_on = [module.folder_service_account.email]
 }
