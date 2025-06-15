@@ -48,7 +48,14 @@ variable "sa_project" {
 
 
 variable "sa_prefix" {
-  description = "Service account display name"
+  description = "Service account display name prefix"
+  type        = string
+  default     = ""
+}
+
+
+variable "sa_name" {
+  description = "Service account display name. Overrides sa_prefix if set"
   type        = string
   default     = ""
 }
