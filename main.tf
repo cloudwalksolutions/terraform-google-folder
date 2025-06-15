@@ -10,18 +10,11 @@ module "folders" {
 
   all_folder_admins = var.create_service_account ? [
     "serviceAccount:${local.sa_email}"
-    # "serviceAccount:${module.folder_service_account[0].email}"
   ] : []
 
-  folder_admin_roles = merge(
-    { for role in var.folder_permissions : role => [
-      "serviceAccount:${local.sa_email}",
-    ] },
-    var.sa_is_security_admin ? {
-      "roles/iam.securityAdmin" = [
-        "serviceAccount:${local.sa_email}",
-      ]
-    } : {}
+  folder_admin_roles = concat(
+    var.folder_permissions,
+    var.sa_is_security_admin ? ["roles/iam.securityAdmin"] : []
   )
 
   depends_on = [module.folder_service_account.email]
