@@ -1,5 +1,4 @@
 
-
 module "folders" {
   source = "terraform-google-modules/folders/google"
 
@@ -14,7 +13,14 @@ module "folders" {
     # "serviceAccount:${module.folder_service_account[0].email}"
   ] : []
 
-  folder_admin_roles = var.folder_permissions
+  folder_admin_roles = merge(
+    { for role in var.folder_permissions : role => [] },
+    var.sa_is_security_admin ? {
+      "roles/iam.securityAdmin" = [
+        "serviceAccount:${local.sa_email}",
+      ]
+    } : {}
+  )
 
   depends_on = [module.folder_service_account.email]
 
