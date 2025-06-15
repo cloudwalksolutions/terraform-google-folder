@@ -76,7 +76,7 @@ variable "create_service_account" {
 
 
 variable "default_folder_permissions" {
-  description = "Default folder permissions for service account created"
+  description = "Default folder permissions for service account created. Each permission will be prepended with 'roles/'"
   type        = list(string)
   default = [
     "iam.securityAdmin",
@@ -92,7 +92,7 @@ variable "default_folder_permissions" {
 }
 
 variable "extra_folder_permissions" {
-  description = "Additional folder permissions for service account created"
+  description = "Additional folder permissions for service account created. Each permission will be prepended with 'roles/'"
   type        = list(string)
   default     = []
 }

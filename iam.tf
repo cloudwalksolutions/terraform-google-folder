@@ -40,7 +40,7 @@ module "folder_iam_bindings" {
       var.default_folder_permissions,
       var.extra_folder_permissions,
       var.sa_is_security_admin ? ["roles/iam.securityAdmin"] : []
-      )) : role => [
+      )) : (startswith(role, "roles/") ? role : "roles/${role}") => [
       "serviceAccount:${local.sa_email}"
     ]
   }
