@@ -79,11 +79,11 @@ variable "default_folder_permissions" {
   description = "Default folder permissions for service account created"
   type        = list(string)
   default = [
-    "iam.securityAdmin",
-    "iam.serviceAccountAdmin",
-    "resourcemanager.folderAdmin",
-    "resourcemanager.projectCreator",
-    "serviceusage.serviceUsageAdmin",
+    "roles/iam.securityAdmin",
+    "roles/iam.serviceAccountAdmin",
+    "roles/resourcemanager.folderAdmin",
+    "roles/resourcemanager.projectCreator",
+    "roles/serviceusage.serviceUsageAdmin",
   ]
 }
 
