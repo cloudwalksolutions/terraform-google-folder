@@ -82,7 +82,7 @@ variable "default_folder_permissions" {
     "iam.securityAdmin",
     "iam.serviceAccountUser",
     "iam.serviceAccountAdmin",
-    "resourcemanager.folderAdmin",
+    "resourcemanager.folderCreator",
     "resourcemanager.folderAdmin",
     "resourcemanager.projectCreator",
     "resourcemanager.projectDeleter",
