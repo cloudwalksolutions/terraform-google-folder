@@ -13,7 +13,8 @@ module "folders" {
   ] : []
 
   folder_admin_roles = concat(
-    var.folder_permissions,
+    var.default_folder_permissions,
+    var.extra_folder_permissions,
     var.sa_is_security_admin ? ["roles/iam.securityAdmin"] : []
   )
 

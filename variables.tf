@@ -75,17 +75,22 @@ variable "create_service_account" {
 }
 
 
-variable "folder_permissions" {
-  description = "Folder permissions for service account created"
+variable "default_folder_permissions" {
+  description = "Default folder permissions for service account created"
   type        = list(string)
   default = [
-    "roles/iam.securityAdmin",
-    "roles/iam.serviceAccountAdmin",
-    "roles/resourcemanager.folderAdmin",
-    "roles/resourcemanager.projectCreator",
-    "roles/serviceusage.serviceUsageAdmin",
+    "iam.securityAdmin",
+    "iam.serviceAccountAdmin",
+    "resourcemanager.folderAdmin",
+    "resourcemanager.projectCreator",
+    "serviceusage.serviceUsageAdmin",
   ]
+}
 
+variable "extra_folder_permissions" {
+  description = "Additional folder permissions for service account created"
+  type        = list(string)
+  default = []
 }
 
 variable "projects_dict" {
