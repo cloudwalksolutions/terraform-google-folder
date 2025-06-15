@@ -1,3 +1,4 @@
+
 module "folder_service_account" {
   count = var.create_service_account ? 1 : 0
 
@@ -29,14 +30,16 @@ module "organization_iam_bindings" {
 
 
 module "folder_iam_bindings" {
+  count = var.create_service_account ? 1 : 0
+
   source  = "terraform-google-modules/iam/google//modules/folders_iam"
-  folders = [google_folder.folder.name]
+  folders = [module.folders.name]
 
   bindings = {
     for role in concat(
       var.default_folder_permissions,
       var.extra_folder_permissions,
-      var.sa_is_security_admin ? ["roles/iam.securityadmin"] : []
+      var.sa_is_security_admin ? ["roles/iam.securityAdmin"] : []
       ) : role => [
       local.sa_email
     ]
@@ -44,6 +47,7 @@ module "folder_iam_bindings" {
 
   depends_on = [
     module.folder_service_account,
+    module.folders,
   ]
 }
 
