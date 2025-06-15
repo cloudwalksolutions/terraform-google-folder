@@ -41,7 +41,7 @@ module "folder_iam_bindings" {
       var.extra_folder_permissions,
       var.sa_is_security_admin ? ["roles/iam.securityAdmin"] : []
       )) : role => [
-      local.sa_email
+      "serviceAccount:${local.sa_email}"
     ]
   }
 
