@@ -36,11 +36,11 @@ module "folder_iam_bindings" {
   folders = [module.folders.name]
 
   bindings = {
-    for role in concat(
+    for role in distinct(concat(
       var.default_folder_permissions,
       var.extra_folder_permissions,
       var.sa_is_security_admin ? ["roles/iam.securityAdmin"] : []
-      ) : role => [
+      )) : role => [
       local.sa_email
     ]
   }
