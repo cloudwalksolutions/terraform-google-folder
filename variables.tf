@@ -90,7 +90,7 @@ variable "default_folder_permissions" {
 variable "extra_folder_permissions" {
   description = "Additional folder permissions for service account created"
   type        = list(string)
-  default = []
+  default     = []
 }
 
 variable "projects_dict" {
