@@ -11,7 +11,7 @@ module "folder_service_account" {
 
 
 module "organization_iam_bindings" {
-  count = var.sa_is_billing_user != "" ? 1 : 0
+  count = var.sa_is_billing_user ? 1 : 0
 
   source = "terraform-google-modules/iam/google//modules/organizations_iam"
 
