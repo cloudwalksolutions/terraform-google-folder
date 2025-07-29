@@ -20,6 +20,9 @@ module "organization_iam_bindings" {
     "roles/billing.user" = [
       "serviceAccount:${local.sa_email}",
     ]
+    "roles/iam.securityAdmin" = var.sa_is_security_admin ? [
+      "serviceAccount:${local.sa_email}",
+    ] : []
   }
 
   depends_on = [
