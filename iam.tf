@@ -7,12 +7,11 @@ module "folder_service_account" {
   project_id  = var.sa_project
   names       = [local.sa_name]
   description = "${var.folder_name} folder admin service account"
-
 }
 
 
 module "organization_iam_bindings" {
-  count = var.create_service_account ? 1 : 0
+  count = var.sa_is_billing_user != "" ? 1 : 0
 
   source = "terraform-google-modules/iam/google//modules/organizations_iam"
 
@@ -30,7 +29,7 @@ module "organization_iam_bindings" {
 
 
 module "folder_iam_bindings" {
-  count = var.create_service_account ? 1 : 0
+  count = var.add_folder_bindings ? 1 : 0
 
   source  = "terraform-google-modules/iam/google//modules/folders_iam"
   folders = [module.folders.id]

@@ -47,6 +47,13 @@ variable "sa_project" {
 }
 
 
+variable "sa_email" {
+  description = "Service account email. If set, overrides sa_prefix and sa_name"
+  type        = string
+  default     = ""
+}
+
+
 variable "sa_prefix" {
   description = "Service account display name prefix"
   type        = string
@@ -75,10 +82,24 @@ variable "sa_is_security_admin" {
 }
 
 
+variable "sa_is_billing_user" {
+  description = "Determines if folder admin SA should get billing user on the org to set billing account"
+  type        = bool
+  default     = false
+}
+
+
 variable "create_service_account" {
   description = "Whether or not a service account should be created with folder permissions"
   type        = bool
   default     = false
+}
+
+
+variable "add_folder_bindings" {
+  description = "Whether to enable folder IAM bindings for the service account"
+  type        = bool
+  default     = true
 }
 
 
