@@ -17,7 +17,10 @@ module "organization_iam_bindings" {
 
   organizations = [var.org_id]
   bindings = {
-    "roles/billing.admin" = [
+    "roles/billing.user" = [
+      "serviceAccount:${local.sa_email}",
+    ]
+    "roles/iam.securityAdmin" = [
       "serviceAccount:${local.sa_email}",
     ]
   }
