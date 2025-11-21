@@ -7,6 +7,11 @@ module "folder_service_account" {
   project_id  = var.sa_project
   names       = [local.sa_name]
   description = "${var.folder_name} folder admin service account"
+
+  depends_on = [
+    module.folders,
+    module.projects,
+  ]
 }
 
 

@@ -7,12 +7,6 @@ module "folders" {
 
   set_roles           = true
   deletion_protection = var.deletion_protection
-
-  all_folder_admins = var.create_service_account ? [
-    "serviceAccount:${local.sa_email}"
-  ] : []
-
-  depends_on = [module.folder_service_account.email]
 }
 
 
