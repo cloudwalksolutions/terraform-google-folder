@@ -20,6 +20,7 @@ module "projects" {
   folder_name     = var.folder_name
   use_random_id   = var.use_random_id
   use_folder_name = var.use_folder_name
+  deletion_policy = var.deletion_policy
 
   folder_id       = module.folders.id
   proj_identifier = var.proj_identifier
