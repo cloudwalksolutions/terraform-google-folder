@@ -146,3 +146,10 @@ variable "deletion_protection" {
 }
 
 
+variable "deletion_policy" {
+  description = "What becomes of a project Terraform stops managing. ABANDON leaves it running and only drops it from state, which is the difference between renaming a project and destroying what is deployed in it"
+  type        = string
+  default     = "DELETE"
+}
+
+
