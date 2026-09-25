@@ -1,16 +1,14 @@
 
+# The folder grants the admin nothing, because that account lives in a project inside this
+# folder — folder, then project, then account — so a grant made here always names one that does
+# not exist yet. `folder_iam_bindings` makes it once the account is real.
 module "folders" {
   source = "terraform-google-modules/folders/google"
 
   parent = var.parent_folder_id
   names  = [var.folder_name]
 
-  set_roles           = true
   deletion_protection = var.deletion_protection
-
-  all_folder_admins = var.create_service_account ? [
-    "serviceAccount:${local.sa_email}"
-  ] : []
 }
 
 
