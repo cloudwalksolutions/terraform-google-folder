@@ -107,6 +107,7 @@ variable "default_folder_permissions" {
   description = "Default folder permissions for service account created. Each permission will be prepended with 'roles/'"
   type        = list(string)
   default = [
+    "compute.networkAdmin",
     "iam.securityAdmin",
     "iam.serviceAccountUser",
     "iam.serviceAccountAdmin",
