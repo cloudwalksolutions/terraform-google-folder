@@ -9,3 +9,7 @@ output "projects_map" {
 output "folder_admin" {
   value = local.sa_email
 }
+
+output "sa_project_id" {
+  value = local.sa_project_id
+}

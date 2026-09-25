@@ -4,7 +4,7 @@ module "folder_service_account" {
 
   source = "terraform-google-modules/service-accounts/google"
 
-  project_id  = var.sa_project
+  project_id  = local.sa_project_id
   names       = [local.sa_name]
   description = "${var.folder_name} folder admin service account"
 
