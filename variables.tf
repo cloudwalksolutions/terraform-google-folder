@@ -47,6 +47,13 @@ variable "sa_project" {
 }
 
 
+variable "sa_project_label" {
+  description = "Key in projects_dict whose created project holds the service account. Preferred over sa_project, which cannot know a random id"
+  type        = string
+  default     = ""
+}
+
+
 variable "sa_email" {
   description = "Service account email. If set, overrides sa_prefix and sa_name"
   type        = string
